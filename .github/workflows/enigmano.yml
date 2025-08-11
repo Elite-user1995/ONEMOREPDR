@@ -15,8 +15,8 @@ jobs:
 
     env:
       INSTANCE_ID: ${{ github.event.inputs.INSTANCE }}
-      SECRET_SHAHZAIB: ${{ secrets.SECRET_SHAHZAIB }}
-      NGROK_SHAHZAIB: ${{ secrets.NGROK_SHAHZAIB }}
+      SECRET_JU: ${{ secrets.SECRET_JU }}
+      NGROK_SECRET: ${{ secrets.NGROK_SECRET }}
       REPO: ${{ github.repository }}
       WORKFLOW_FILE: "enigmano.yml"
       DEPLOYMENT_ID: ${{ github.run_id }}
@@ -37,12 +37,12 @@ jobs:
       - name: 🔐 Validate Secrets
         shell: pwsh
         run: |
-          if (-not $env:SECRET_SHAHZAIB) {
-            Write-Error "❌ Missing GitHub Secret: SECRET_SHAHZAIB"
+          if (-not $env:SECRET_JU) {
+            Write-Error "❌ Missing GitHub Secret: SECRET_JU"
             exit 1
           }
-          if (-not $env:NGROK_SHAHZAIB) {
-            Write-Error "❌ Missing Ngrok Auth Token: NGROK_SHAHZAIB"
+          if (-not $env:NGROK_SECRET) {
+            Write-Error "❌ Missing Ngrok Auth Token: NGROK_SECRET"
             exit 1
           }
           Write-Host "✅ All required secrets validated successfully"
